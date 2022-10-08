@@ -5,6 +5,7 @@ import Wrapper from '../assets/wrappers/Job';
 import JobInfo from './JobInfo';
 import moment from 'moment';
 import 'moment/locale/pt-br';
+import { deleteJob } from '../features/job/jobSlice';
 const Job = ({
   _id,
   position,
@@ -48,7 +49,7 @@ const Job = ({
               type="button"
               className="btn delete-btn"
               onClick={() => {
-                console.log('deletar trampo');
+                dispatch(deleteJob(_id));
               }}
             >
               Deletar
