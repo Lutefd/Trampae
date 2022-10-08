@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Logo, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterPage';
+import { toast } from 'react-toastify';
 const initialState = {
   nome: '',
   email: '',
@@ -22,7 +23,7 @@ function Register() {
     console.log(e.target);
     const { nome, email, senha, isMember } = values;
     if (!email || !senha || (!isMember && !nome)) {
-      console.log('Preencha todos os campos');
+      toast.error('Preencha todos os campos');
     }
   };
 
