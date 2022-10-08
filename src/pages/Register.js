@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, registerUser } from '../features/user/userSlice';
 
 const initialState = {
-  nome: '',
+  name: '',
   email: '',
-  senha: '',
+  password: '',
   isMember: true,
 };
 function Register() {
@@ -24,16 +24,16 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(e.target);
-    const { nome, email, senha, isMember } = values;
-    if (!email || !senha || (!isMember && !nome)) {
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
       toast.error('Preencha todos os campos');
       return;
     }
     if (isMember) {
-      dispatch(loginUser({ email, senha }));
+      dispatch(loginUser({ email, password }));
       return;
     }
-    dispatch(registerUser({ nome, email, senha }));
+    dispatch(registerUser({ name, email, password }));
   };
 
   const toggleMember = () => {
@@ -48,8 +48,8 @@ function Register() {
         {!values.isMember && (
           <FormRow
             type="text"
-            name="nome"
-            value={values.nome}
+            name="name"
+            value={values.name}
             handleChange={handleChange}
           />
         )}
@@ -63,8 +63,8 @@ function Register() {
         {/* password field */}
         <FormRow
           type="password"
-          name="senha"
-          value={values.senha}
+          name="password"
+          value={values.password}
           handleChange={handleChange}
         />
         <button type="submit" className="btn btn-block">
