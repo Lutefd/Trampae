@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { Logo, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterPage';
 import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser, registerUser } from '../features/user/userSlice';
+
 const initialState = {
   nome: '',
   email: '',
@@ -10,9 +13,9 @@ const initialState = {
 };
 function Register() {
   const [values, setValues] = useState(initialState);
-
+  const { user, isLoading } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const handleChange = (e) => {
-    console.log(e.target);
     const name = e.target.name;
     const value = e.target.value;
 
@@ -24,7 +27,13 @@ function Register() {
     const { nome, email, senha, isMember } = values;
     if (!email || !senha || (!isMember && !nome)) {
       toast.error('Preencha todos os campos');
+      return;
     }
+    if (isMember) {
+      dispatch(loginUser({ email, senha }));
+      return;
+    }
+    dispatch(registerUser({ nome, email, senha }));
   };
 
   const toggleMember = () => {
@@ -59,7 +68,7 @@ function Register() {
           handleChange={handleChange}
         />
         <button type="submit" className="btn btn-block">
-          submit
+          Enviar
         </button>
         <p>
           {values.isMember ? 'Ainda não tem uma conta?' : 'Já tem uma conta?'}
