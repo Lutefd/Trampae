@@ -3,6 +3,7 @@ import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { updateUser } from '../../features/user/userSlice';
 const Profile = () => {
   const { isLoading, user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -18,9 +19,10 @@ const Profile = () => {
     const { name, email, lastName, location } = userData;
 
     if (!name || !email || !lastName || !location) {
-      toast.error('Please Fill Out All Fields');
+      toast.error('Preencha todos os campos');
       return;
     }
+    dispatch(updateUser({ name, email, lastName, location }));
   };
   const handleChange = (e) => {
     const name = e.target.name;
