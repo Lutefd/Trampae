@@ -67,8 +67,8 @@ function Register() {
           value={values.password}
           handleChange={handleChange}
         />
-        <button type="submit" className="btn btn-block">
-          Enviar
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
+          {isLoading ? 'Processando...' : 'Enviar'}
         </button>
         <p>
           {values.isMember ? 'Ainda não tem uma conta?' : 'Já tem uma conta?'}
