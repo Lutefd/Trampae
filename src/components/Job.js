@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 import Wrapper from '../assets/wrappers/Job';
 import JobInfo from './JobInfo';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 const Job = ({
   _id,
   position,
@@ -13,7 +15,8 @@ const Job = ({
   status,
 }) => {
   const dispatch = useDispatch();
-  const date = createdAt;
+  moment.locale();
+  const date = moment(createdAt).format('ll');
   return (
     <Wrapper>
       <header>
