@@ -14,14 +14,15 @@ const Landing = () => {
           {/*info*/}
           <div className="info">
             <h1>
-              Job <span>tracking</span> app
+              Uma forma simples de <span>gerenciar</span> suas aplicações de
+              emprego
             </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-              ullamcorper eu diam eu finibus. Aenean scelerisque, urna eget
-              commodo scelerisque, eros mauris sollicitudin nulla, vitae
-              ultrices elit metus sit amet est. Ut tempor finibus velit.
-              Pellentesque id lobortis leo. Integer eu magna suscipit, eleifend
+              O Trampaê é uma forma simples e moderna de se organizar no meio do
+              caos do mercado de trabalho. Hoje em dia, cada candidato aplica
+              para dezenas de vagas, o Trampaê existe para te ajudar com isso!
+              Com uma interface minimalista, você consege acompanhar suas
+              aplicações de empregos e as separar pelo os seus andamentos!
             </p>
             <Link to="/register" className="btn btn-hero">
               Login/Registrar
