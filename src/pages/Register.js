@@ -57,6 +57,7 @@ function Register() {
         {!values.isMember && (
           <FormRow
             type="text"
+            labelText="Nome"
             name="name"
             value={values.name}
             handleChange={handleChange}
@@ -72,6 +73,7 @@ function Register() {
         {/* password field */}
         <FormRow
           type="password"
+          labelText="Senha"
           name="password"
           value={values.password}
           handleChange={handleChange}
