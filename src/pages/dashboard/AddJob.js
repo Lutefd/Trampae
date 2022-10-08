@@ -6,6 +6,7 @@ import {
   handleChange,
   clearValues,
   createJob,
+  editJob,
 } from '../../features/job/jobSlice';
 const AddJob = () => {
   const {
@@ -27,6 +28,21 @@ const AddJob = () => {
 
     if (!position || !company || !jobLocation) {
       toast.error('Preencha todos os campos');
+      return;
+    }
+    if (isEditing) {
+      dispatch(
+        editJob({
+          jobId: editJobId,
+          job: {
+            position,
+            company,
+            jobLocation,
+            jobType,
+            status,
+          },
+        })
+      );
       return;
     }
     dispatch(createJob({ position, company, jobLocation, jobType, status }));

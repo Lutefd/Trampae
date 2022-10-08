@@ -5,7 +5,8 @@ import Wrapper from '../assets/wrappers/Job';
 import JobInfo from './JobInfo';
 import moment from 'moment';
 import 'moment/locale/pt-br';
-import { deleteJob } from '../features/job/jobSlice';
+import { deleteJob, setEditJob } from '../features/job/jobSlice';
+
 const Job = ({
   _id,
   position,
@@ -40,7 +41,15 @@ const Job = ({
               to="/add-job"
               className="btn edit-btn"
               onClick={() => {
-                console.log('editar trampo');
+                dispatch(
+                  setEditJob({
+                    editJobId: _id,
+                    position,
+                    company,
+                    jobLocation,
+                    jobType,
+                  })
+                );
               }}
             >
               Editar
