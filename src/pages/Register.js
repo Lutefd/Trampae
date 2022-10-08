@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { Logo, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterPage';
 const initialState = {
-  name: '',
+  nome: '',
   email: '',
-  password: '',
+  senha: '',
   isMember: true,
 };
 function Register() {
@@ -20,9 +20,9 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(e.target);
-    const { name, email, password, isMember } = values;
-    if (!email || !password || (!isMember && !name)) {
-      console.log('Please fill out all fields');
+    const { nome, email, senha, isMember } = values;
+    if (!email || !senha || (!isMember && !nome)) {
+      console.log('Preencha todos os campos');
     }
   };
 
@@ -33,13 +33,13 @@ function Register() {
     <Wrapper className="full-page">
       <form className="form" onSubmit={onSubmit}>
         <Logo />
-        <h3>{values.isMember ? 'Login' : 'Register'}</h3>
+        <h3>{values.isMember ? 'Login' : 'Cadastro'}</h3>
         {/* name field */}
         {!values.isMember && (
           <FormRow
             type="text"
-            name="name"
-            value={values.name}
+            name="nome"
+            value={values.nome}
             handleChange={handleChange}
           />
         )}
@@ -53,17 +53,17 @@ function Register() {
         {/* password field */}
         <FormRow
           type="password"
-          name="password"
-          value={values.password}
+          name="senha"
+          value={values.senha}
           handleChange={handleChange}
         />
         <button type="submit" className="btn btn-block">
           submit
         </button>
         <p>
-          {values.isMember ? 'Not a member yet?' : 'Already a member?'}
+          {values.isMember ? 'Ainda não tem uma conta?' : 'Já tem uma conta?'}
           <button type="button" onClick={toggleMember} className="member-btn">
-            {values.isMember ? 'Register' : 'Login'}
+            {values.isMember ? 'Cadastre-se' : 'Login'}
           </button>
         </p>
       </form>
