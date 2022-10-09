@@ -1,4 +1,20 @@
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Wrapper from '../assets/wrappers/ChartsContainer';
+import AreaChart from './AreaChart';
+import BarChart from './BarChart';
 const ChartsContainer = () => {
-  return <div>a</div>;
+  const [barChart, setBarChart] = useState(true);
+  const { monthlyApplications: data } = useSelector((store) => store.allJobs);
+  return (
+    <Wrapper>
+      <h4>Aplicações Mensais</h4>
+      <button type="button" onClick={() => setBarChart(!barChart)}>
+        {barChart ? 'Gráfico de Área' : 'Gráfico de Barras'}
+      </button>
+      {barChart ? <BarChart data={data} /> : <AreaChart data={data} />}
+    </Wrapper>
+  );
 };
+
 export default ChartsContainer;
