@@ -97,6 +97,12 @@ const allJobsSlice = createSlice({
       state.isLoading = false;
       toast.error(payload);
     },
+    [getAllJobs.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.jobs = payload.jobs;
+      state.numOfPages = payload.numOfPages;
+      state.totalJobs = payload.totalJobs;
+    },
   },
 });
 
